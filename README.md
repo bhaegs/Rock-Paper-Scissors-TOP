@@ -1,3 +1,3 @@
-Run this in VSCode.
+To use version 1, run the index.html in a browser and open up the console. Type game() to play.
 
-Use the Live Server plugin and run the game() in the console of your browser.
+VERSION 2 WIP.
