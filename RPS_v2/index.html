@@ -14,16 +14,37 @@
             <input type="checkbox" id="checkbox">
             <div class="slider round"></div>
         </label>  
-        <em>Enable Dark Mode</em>  
+        <em>Enable Dark Mode</em>       
+
     </div>
+</div>
+
+<div id="scoreBoard">
+    <div id="playerScore">
+            <h3>Wins:</h3>
+            <h3 id="pWins">0</h3>
+    </div>
+
+    <div id="computerScore">
+            <h3>Losses:</h3>
+            <h3 class="cWins">0</h3>
+    </div>
+
+    <div id="tieScore">
+            <h3>Ties:</h3>
+            <h3 id="tie">0</h3>
+    </div>
+</div>
 
     <div class="content">
         <h1>Rock Paper Scissors</h1>
     </div>
 
-    <h2 class="content" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 2.4em;">Choose One</h2>
-    
-    <button onclick="game()">Click to Play</button>
+    <h2 id="instructions" class="content" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 2.4em;">Choose One</h2>
+
+    <div id="result">
+        <h2 id="res"></h2>    
+    </div>
 
     <div class="rps">
         <img onclick="" id="rock" class="animate__fadeIn" width="38%" height="38%" src="Images/rock.svg">
