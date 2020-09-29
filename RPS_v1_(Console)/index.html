@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let play = Math.floor(Math.random() * 3);
+            if (play === 0) {
+                return 'rock';
+            } else if (play === 1) {
+                return 'paper';
+            } else {
+                return 'scissors';
+            }
+        };
+
+        playerScore = 0;
+        computerScore = 0;
+        tie = 0;
+        let round = 0;
+
+        function playRound(playerSel, computerSel) {
+            let playerChoice = playerSel.slice(0, 1).toUpperCase() + playerSel.slice(1).toLowerCase();
+            let computerChoice = computerSel.slice(0, 1).toUpperCase() + computerSel.slice(1).toLowerCase();
+
+            if ((playerChoice === 'Rock' && computerChoice === 'Scissors')
+            || (playerChoice === 'Paper' && computerChoice === 'Rock')
+            || (playerChoice === 'Scissors' && computerChoice === 'Paper')) {
+                playerScore++;
+                return `You win! ${playerChoice} beats ${computerChoice}.`;
+            } else if (playerChoice === computerChoice) {
+                tie++;
+                return `It's a draw!`;
+            } else if (playerChoice === '' || (playerChoice != ['rock', 'paper', 'scissors'])) {
+                !tie++; !computerScore++; !playerScore++; return `Type rock, paper, or scissors you idiot.`;
+            } else {
+                computerScore++;
+                return  `You lose! ${computerChoice} beats ${playerChoice}.`;
+            }
+        };
+
+        function game() {
+            while (round < 5) {
+                playerSel = prompt(`Enter rock, paper, or scissors. 5 rounds. Best player wins.`);
+                computerSel = computerPlay();
+                console.log(playRound(playerSel, computerSel));
+                if (playerSel = ['rock', 'paper', 'scissors']) {
+                    round++;
+                } else {
+                    console.log(`Put rock, paper, or scissors in, you idiot.`);
+                }
+            }
+            if (playerScore > computerScore) {
+                return `You won the game! Score: Player - ${playerScore}, Computer - ${computerScore}, Ties - ${tie}`;
+            }
+            if (playerScore < computerScore) {
+                return `You lost the game! Score: Player - ${playerScore}, Computer - ${computerScore}, Ties - ${tie}`;
+        }
+    };
+
+        
+
+    </script>
+</body>
+</html>
