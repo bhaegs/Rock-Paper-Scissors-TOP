@@ -13,6 +13,7 @@ function switchTheme(e) {
 
 toggleSwitch.addEventListener('change', switchTheme, false);
 
+// Rock Paper Scissors onclick
     const selRock = document.querySelector('#rock');
     const selPaper = document.querySelector('#paper');
     const selScissors = document.querySelector('#scissors');
