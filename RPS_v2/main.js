@@ -24,10 +24,18 @@ toggleSwitch.addEventListener('change', switchTheme, false);
     let playerWins = document.querySelector('#pWins');
     let computerWins = document.querySelector('#cWins');
     let result = document.querySelector('#res');
-    let endGame = document.querySelector('#endGame');
     const replay = document.querySelector('#replay');
 
-    document.querySelector('#res').textContent = 'Choose Rock, Paper, or Scissors';
+    // Fireworks
+    var fireworks = document.querySelector('[href="style2.css"]');
+    var stylesheet = fireworks.sheet || fireworks.styleSheet;
+    fireworks.disabled = true;
+
+    function showFireworks() {
+        fireworks.disabled = false;
+    }
+
+    result.textContent = 'Select Rock, Paper or Scissors to play. First to 5 wins.';
 
 function computerPlay() {
     let play = Math.floor(Math.random() * 3);
@@ -47,71 +55,69 @@ function playRound(playerSel, computerSel) {
     if ((playerChoice === 'rock' && computerChoice === 'scissors')
     || (playerChoice === 'paper' && computerChoice === 'rock')
     || (playerChoice === 'scissors' && computerChoice === 'paper')) {
-        computerWins.textContent = `${playerScore += 1}`;
-        document.querySelector("#res").textContent = `You win! ${playerChoice.slice(0, 1).toUpperCase()}${playerChoice.slice(1).toLowerCase()} beats ${computerChoice}.`;
+        playerWins.textContent = `${playerScore += 1}`;
+        result.textContent = `You win! ${playerChoice.slice(0, 1).toUpperCase()}${playerChoice.slice(1).toLowerCase()} beats ${computerChoice}.`;
     } else if (playerChoice === computerChoice) {
-        document.querySelector("#res").textContent = `It's a draw!`;
+        result.textContent = `It's a draw!`;
     } else if ((computerChoice === 'rock' && playerChoice === 'scissors')
     || (computerChoice === 'paper' && playerChoice === 'rock')
     || (computerChoice === 'scissors' && playerChoice === 'paper')) {
-        playerWins.textContent = `${computerScore += 1}`;
-        document.querySelector("#res").textContent = `You lose! ${computerChoice.slice(0, 1).toUpperCase()}${computerChoice.slice(1).toLowerCase()} beats ${playerChoice}.`;
+        computerWins.textContent = `${computerScore += 1}`;
+        result.textContent = `You lose! ${computerChoice.slice(0, 1).toUpperCase()}${computerChoice.slice(1).toLowerCase()} beats ${playerChoice}.`;
     } else if ((playerChoice !== 'rock', 'paper', 'scissors')) {
-        document.querySelector("#res").textContent = `Choose rock, paper, or scissors, you idiot.`;
+        result.textContent = `Something went wrong. Try again.`;
     }
 };
 
 function hideDisplay(){
-    replay.style.visibility = "hidden";
+    replay.style.display = "none";
 };
-  document.querySelector('#replay').disabled = true;
-  endGame.textContent = "Game on!";
-  endGame.style.color ="green";
 
+replay.disabled = true;
 
 function game(){
     playRound(playerSel, computerSel)
 
-        if(playerScore >= 5){
-            document.querySelector('#res').textContent = `You won! Here's the score: ${playerScore} to ${computerScore}.`
-            document.querySelector('#res').style.color = 'green'
+        if(playerScore > 4){
+            result.textContent = `You won! Here's the score: ${playerScore} to ${computerScore}.`
+            result.style.color = '#66bb6a';
+            showFireworks();
             gameOver();
         }
-        else if(computerScore >= 5){
-            document.querySelector('#res').textContent = `You Lose. Here's the score: ${computerScore} to ${playerScore}.` 
-            document.querySelector('#res').style.color = 'red'
+        else if(computerScore > 4){
+            result.textContent = `You Lose. Here's the score: ${playerScore} to ${computerScore}.` 
+            result.style.color = '#ff4655';
             gameOver();
-        }       
+        }
 };
 
 selRock.addEventListener('click', ()=>{
     playerSel = "rock"
     computerSel = computerPlay()
     game()
-});
+  });
 selPaper.addEventListener('click', ()=>{
     playerSel = "paper"
     computerSel = computerPlay()
     game()
-});
+  });
 selScissors.addEventListener('click', ()=>{
     playerSel = "scissors"
     computerSel = computerPlay()
     game()
-});
+  });
+
 
 function showDisplay(){
-    replay.style.visibility = "visible";
+    replay.style.display = "block";
+    replay.textContent = "Play Again?";
 };
 
 function gameOver(){
-    document.querySelector('#rock').disabled = true;
-    document.querySelector('#paper').disabled = true;
-    document.querySelector('#scissors').disabled = true;
-    endGame.textContent = "Game Over";
-    endGame.style.color = 'red';
-    document.querySelector('#replay').disabled = false;
-    replay.textContent = "Restart";
+    selScissors.style.pointerEvents = 'none';
+    selPaper.style.pointerEvents = 'none';
+    selRock.style.pointerEvents = 'none';
+    replay.disabled = false;
     showDisplay()
 };
 
@@ -120,15 +126,15 @@ replay.addEventListener('click', ()=>{
 });
 
 function playAgain(){
-    document.querySelector('#rock').disabled = false;
-    document.querySelector('#paper').disabled = false;
-    document.querySelector('#scissors').disabled = false;
-    endGame.textContent = "Game on!";
-    endGame.style.color = "green";
-    document.querySelector('#res').textContent = "Select Rock, Paper or Scissors to play";
-    playerScore = 0; 
+    selScissors.style.pointerEvents = 'auto';
+    selPaper.style.pointerEvents = 'auto';
+    selRock.style.pointerEvents = 'auto';
+    result.textContent = "Select Rock, Paper or Scissors to play. First to 5 wins.";
+    playerScore = 0;
     computerScore = 0;
-    computerWins.textContent = computerScore;
     playerWins.textContent = playerScore;
+    computerWins.textContent = computerScore;
+    result.style.color = 'var(--font-color)';
+    fireworks.disabled = true;
     hideDisplay()
 };
