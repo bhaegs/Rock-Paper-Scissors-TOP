@@ -37,17 +37,15 @@
      }
 }
 
+@media only screen and (max-width: 1041px) {
+    #result {
+        font-size: 60%;
+    }
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--font-color);
-}
-
-.main {
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
 }
 
 .noselect {
@@ -189,6 +187,7 @@ a {
     cursor: pointer;
 }
 
+/* Play Again? */
 #replay {
     display: flex;
     justify-content: center;
@@ -209,12 +208,6 @@ a {
     transition: all 0.5s;
     margin-top: 5px;
   }
-
-@media only screen and (max-width: 1041px) {
-    #result {
-        font-size: 60%;
-    }
-}
 
 
 /* FOOTER */

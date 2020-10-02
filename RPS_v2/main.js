@@ -26,16 +26,16 @@ toggleSwitch.addEventListener('change', switchTheme, false);
     let result = document.querySelector('#res');
     const replay = document.querySelector('#replay');
 
-    // Fireworks
-    var fireworks = document.querySelector('[href="style2.css"]');
-    var stylesheet = fireworks.sheet || fireworks.styleSheet;
-    fireworks.disabled = true;
+// Fireworks
+var fireworks = document.querySelector('[href="style2.css"]');
+var stylesheet = fireworks.sheet || fireworks.styleSheet;
+fireworks.disabled = true;
 
-    function showFireworks() {
-        fireworks.disabled = false;
-    }
+ function showFireworks() {
+    fireworks.disabled = false;
+}
 
-    result.textContent = 'Select Rock, Paper or Scissors to play. First to 5 wins.';
+result.textContent = 'Select Rock, Paper or Scissors to play. First to 5 wins.';
 
 function computerPlay() {
     let play = Math.floor(Math.random() * 3);
